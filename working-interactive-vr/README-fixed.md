@@ -229,11 +229,6 @@ npm run test:performance    # ⚡ Load & speed tests
 
 ---
 
-## 🤝 **Contributing**
-
-### **🌟 We Welcome Contributors!**
-Developers, accessibility experts, and users with disabilities - your input shapes our platform!
-
 ### **🛠️ Development Process**
 1. **🍴 Fork** the repository
 2. **🌿 Branch**: `git checkout -b feature/amazing-accessibility-feature`  
@@ -263,64 +258,4 @@ Developers, accessibility experts, and users with disabilities - your input shap
 
 ---
 
-## 🗓️ **Roadmap**
 
-### **🚀 Version 2.0** *(Q4 2025)*
-- 🤖 **AI Personal Coach**: Adaptive learning algorithms
-- 👥 **Multiplayer Training**: Collaborative scenarios  
-- 🌐 **Smart City Integration**: Real-time accessibility data
-- 🏆 **Certification Paths**: Professional skill validation
-
-### **🌟 Version 3.0** *(Q2 2026)*  
-- 🌍 **Global Standards**: International accessibility compliance
-- 🏢 **Enterprise Solutions**: Business accessibility tools
-- 🧬 **Biometric Integration**: Advanced progress monitoring
-- 🔬 **Research Partnerships**: Academic collaboration programs
-
----
-
-## 🏆 **Recognition & Impact**
-
-### **🎖️ Awards & Certifications**
-![DSMN 4](https://img.shields.io/badge/DSMN%204-Problem%20Statement%20Winner-FF6B6B?style=for-the-badge&logo=award&logoColor=white)
-![WCAG Certified](https://img.shields.io/badge/WCAG%202.1-AA%20Certified-4ECDC4?style=for-the-badge&logo=accessibility&logoColor=white)
-![WebXR Excellence](https://img.shields.io/badge/WebXR-Excellence%20Award-45B7D1?style=for-the-badge&logo=vr&logoColor=white)
-
-### **📊 Impact Metrics**
-- **🎯 95%** User confidence improvement
-- **♿ 100%** WCAG 2.1 AA compliance
-- **🌍 12+** Supported languages  
-- **🥽 20+** Compatible VR/AR devices
-
----
-
-## 📞 **Support & Community**
-
-### **🆘 Getting Help**
-- **📚 Documentation**: Comprehensive guides available
-- **🐛 Bug Reports**: [GitHub Issues](https://github.com/accessibilityvr/vr-trainer/issues)
-- **💬 Community**: [Discussion Forum](https://github.com/accessibilityvr/vr-trainer/discussions)  
-- **📧 Email**: [support@accessibilityvr-trainer.org](mailto:support@accessibilityvr-trainer.org)
-
-### **♿ Accessibility Support**
-- **📧 Accessibility Team**: [accessibility@accessibilityvr-trainer.org](mailto:accessibility@accessibilityvr-trainer.org)
-- **☎️ Phone Support**: 1-800-VR-ACCESS
-- **📞 TTY Service**: Available upon request
-- **🗣️ Sign Language**: Virtual interpretation available
-
----
-
-## 📄 **License**
-
-**📜 MIT License** - Open source for accessibility innovation
-
-*Built with ❤️ for accessibility, inclusion, and independence*
-
----
-
-### **🔗 Quick Links**
-[🌐 Website](https://accessibilityvr-trainer.org) • [📚 Docs](docs/) • [💬 Community](https://github.com/accessibilityvr/vr-trainer/discussions) • [📧 Support](mailto:support@accessibilityvr-trainer.org)
-
----
-
-![Made with Accessibility First](https://img.shields.io/badge/Made%20with-♿%20Accessibility%20First-FF6B6B?style=for-the-badge&logo=heart&logoColor=white)

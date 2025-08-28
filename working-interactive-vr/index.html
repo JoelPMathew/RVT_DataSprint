@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessibilityVR - Realistic Immersive Training Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Revolutionary VR/AR accessibility training platform with realistic 3D environments and working interactive elements">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="container">
+                <div class="welcome-hero">
+                    <div class="hero-content">
+                        <h1 class="hero-title">AccessibilityVR</h1>
+                        <p class="hero-subtitle">Immersive Training with Realistic Environments</p>
+                        <p class="hero-description">Practice accessibility scenarios in detailed, realistic VR/AR environments. Experience working subway stations, restaurants, shopping malls, and hospitals with fully functional interactive elements.</p>
+                        
+                        <div class="hero-actions">
+                            <button id="try-vr-demo-btn" class="btn btn--primary btn--lg btn--hero">
+                                <span class="btn-icon">🥽</span>
+                                Enter Realistic VR
+                            </button>
+                            <button id="get-started-btn" class="btn btn--outline btn--lg">
+                                Get Started
+                            </button>
+                        </div>
+                        
+                        <div class="hero-features">
+                            <div class="feature-badge">
+                                <span class="feature-icon">🏢</span>
+                                <span>Realistic Environments</span>
+                            </div>
+                            <div class="feature-badge">
+                                <span class="feature-icon">🎮</span>
+                                <span>Working Interactions</span>
+                            </div>
+                            <div class="feature-badge">
+                                <span class="feature-icon">♿</span>
+                                <span>Full Accessibility</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-preview">
+                        <div id="vr-preview-container" class="vr-preview-container">
+                            <canvas id="hero-canvas" class="hero-canvas"></canvas>
+                            <div class="preview-overlay">
+                                <span class="preview-text">Interactive Realistic 3D Preview</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Screen -->
+        <section id="setup-screen" class="screen">
+            <div class="container">
+                <div class="setup-content">
+                    <header class="setup-header">
+                        <h1>Quick Setup</h1>
+                        <p>Personalize your realistic VR training experience</p>
+                        <div class="setup-progress">
+                            <div class="progress-steps">
+                                <div class="step active" data-step="1">
+                                    <span class="step-number">1</span>
+                                    <span class="step-label">Device</span>
+                                </div>
+                                <div class="step" data-step="2">
+                                    <span class="step-number">2</span>
+                                    <span class="step-label">Needs</span>
+                                </div>
+                                <div class="step" data-step="3">
+                                    <span class="step-number">3</span>
+                                    <span class="step-label">Goals</span>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    
+                    <div class="setup-steps">
+                        <!-- Step 1: Device Selection -->
+                        <div class="step-content active" data-step="1">
+                            <h2>Choose Your Device</h2>
+                            <div class="device-grid">
+                                <button class="device-card" data-device="webxr">
+                                    <div class="device-icon">🌐</div>
+                                    <h3>WebXR Browser</h3>
+                                    <p>Realistic VR/AR in your browser</p>
+                                    <div class="device-status">Checking...</div>
+                                </button>
+                                <button class="device-card" data-device="mobile">
+                                    <div class="device-icon">📱</div>
+                                    <h3>Mobile AR</h3>
+                                    <p>Smartphone AR with real environments</p>
+                                    <div class="device-status">Available</div>
+                                </button>
+                                <button class="device-card" data-device="headset">
+                                    <div class="device-icon">🥽</div>
+                                    <h3>VR Headset</h3>
+                                    <p>Full immersion with realistic detail</p>
+                                    <div class="device-status">Detecting...</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Accessibility Needs -->
+                        <div class="step-content" data-step="2">
+                            <h2>Accessibility Preferences</h2>
+                            <div class="needs-grid">
+                                <label class="need-card">
+                                    <input type="checkbox" name="needs" value="mobility">
+                                    <div class="need-content">
+                                        <div class="need-icon">♿</div>
+                                        <h3>Mobility</h3>
+                                        <p>Wheelchair, walker, or mobility aid navigation</p>
+                                    </div>
+                                </label>
+                                <label class="need-card">
+                                    <input type="checkbox" name="needs" value="visual">
+                                    <div class="need-content">
+                                        <div class="need-icon">👁️</div>
+                                        <h3>Visual</h3>
+                                        <p>Screen reader, high contrast, spatial audio guidance</p>
+                                    </div>
+                                </label>
+                                <label class="need-card">
+                                    <input type="checkbox" name="needs" value="hearing">
+                                    <div class="need-content">
+                                        <div class="need-icon">👂</div>
+                                        <h3>Hearing</h3>
+                                        <p>Visual alerts, haptic feedback, sign language</p>
+                                    </div>
+                                </label>
+                                <label class="need-card">
+                                    <input type="checkbox" name="needs" value="cognitive">
+                                    <div class="need-content">
+                                        <div class="need-icon">🧠</div>
+                                        <h3>Cognitive</h3>
+                                        <p>Simplified interface, extended interaction time</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Training Goals -->
+                        <div class="step-content" data-step="3">
+                            <h2>Training Goals</h2>
+                            <div class="goals-grid">
+                                <label class="goal-card">
+                                    <input type="checkbox" name="goals" value="navigation">
+                                    <div class="goal-content">
+                                        <div class="goal-icon">🧭</div>
+                                        <h3>Navigation Skills</h3>
+                                        <p>Master movement in realistic environments</p>
+                                    </div>
+                                </label>
+                                <label class="goal-card">
+                                    <input type="checkbox" name="goals" value="interaction">
+                                    <div class="goal-content">
+                                        <div class="goal-icon">🤝</div>
+                                        <h3>Object Interaction</h3>
+                                        <p>Practice with realistic interactive elements</p>
+                                    </div>
+                                </label>
+                                <label class="goal-card">
+                                    <input type="checkbox" name="goals" value="independence">
+                                    <div class="goal-content">
+                                        <div class="goal-icon">🎯</div>
+                                        <h3>Independence</h3>
+                                        <p>Build confidence in real-world scenarios</p>
+                                    </div>
+                                </label>
+                                <label class="goal-card">
+                                    <input type="checkbox" name="goals" value="safety">
+                                    <div class="goal-content">
+                                        <div class="goal-icon">🛡️</div>
+                                        <h3>Safety Protocols</h3>
+                                        <p>Learn emergency procedures and safety features</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="setup-actions">
+                        <button id="setup-back" class="btn btn--outline" disabled>Back</button>
+                        <button id="setup-next" class="btn btn--primary btn--lg">Next</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Screen -->
+        <section id="dashboard-screen" class="screen">
+            <div class="container">
+                <header class="dashboard-header">
+                    <div class="dashboard-welcome">
+                        <h1>Welcome to Realistic VR Training</h1>
+                        <p>Ready to explore detailed environments?</p>
+                    </div>
+                    <div class="dashboard-controls">
+                        <button id="vr-mode-toggle" class="btn btn--primary">
+                            <span class="btn-icon">🥽</span>
+                            Enter Realistic VR
+                        </button>
+                        <button id="settings-btn" class="btn btn--outline">
+                            <span class="btn-icon">⚙️</span>
+                            Settings
+                        </button>
+                    </div>
+                </header>
+                
+                <div class="dashboard-grid">
+                    <!-- Progress Overview -->
+                    <div class="progress-card">
+                        <h2>Your Progress</h2>
+                        <div class="progress-stats">
+                            <div class="stat">
+                                <div class="stat-number" id="scenarios-completed">0</div>
+                                <div class="stat-label">Environments</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" id="hours-practiced">0h</div>
+                                <div class="stat-label">Practice Time</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number" id="achievements-count">0</div>
+                                <div class="stat-label">Achievements</div>
+                            </div>
+                        </div>
+                        <div class="progress-chart">
+                            <div class="chart-container" style="position: relative; height: 200px;">
+                                <canvas id="progress-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Realistic Environment Categories -->
+                    <div class="scenarios-section">
+                        <h2>Realistic Training Environments</h2>
+                        <div class="scenario-categories">
+                            <button class="scenario-category" data-category="public_spaces">
+                                <div class="category-preview">
+                                    <canvas class="category-canvas" id="public-spaces-canvas"></canvas>
+                                </div>
+                                <div class="category-content">
+                                    <h3>Public Transportation</h3>
+                                    <p>Realistic subway stations with working ticket machines, safety features, and accessibility infrastructure</p>
+                                    <div class="category-stats">
+                                        <span class="available-count">Detailed 3D environments</span>
+                                        <span class="vr-badge">Fully Interactive</span>
+                                    </div>
+                                </div>
+                                <div class="category-action">
+                                    <span class="action-text">Enter VR</span>
+                                    <span class="action-arrow">→</span>
+                                </div>
+                            </button>
+                            
+                            <button class="scenario-category" data-category="social_events">
+                                <div class="category-preview">
+                                    <canvas class="category-canvas" id="social-events-canvas"></canvas>
+                                </div>
+                                <div class="category-content">
+                                    <h3>Shopping & Dining</h3>
+                                    <p>Interactive food courts, restaurants with working ordering systems and accessible seating</p>
+                                    <div class="category-stats">
+                                        <span class="available-count">Realistic interactions</span>
+                                        <span class="vr-badge">Working Systems</span>
+                                    </div>
+                                </div>
+                                <div class="category-action">
+                                    <span class="action-text">Enter VR</span>
+                                    <span class="action-arrow">→</span>
+                                </div>
+                            </button>
+                            
+                            <button class="scenario-category" data-category="daily_activities">
+                                <div class="category-preview">
+                                    <canvas class="category-canvas" id="daily-activities-canvas"></canvas>
+                                </div>
+                                <div class="category-content">
+                                    <h3>Healthcare Facilities</h3>
+                                    <p>Hospital reception areas with functional check-in systems and accessible waiting areas</p>
+                                    <div class="category-stats">
+                                        <span class="available-count">Professional environments</span>
+                                        <span class="vr-badge">Real Procedures</span>
+                                    </div>
+                                </div>
+                                <div class="category-action">
+                                    <span class="action-text">Enter VR</span>
+                                    <span class="action-arrow">→</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VR Experience Screen -->
+        <section id="vr-experience-screen" class="screen">
+            <div class="vr-container">
+                <div class="vr-ui">
+                    <div class="vr-header">
+                        <button id="exit-vr" class="vr-button exit-button">
+                            <span>Exit VR</span>
+                        </button>
+                        <div class="vr-title">
+                            <h1 id="vr-scenario-title">Realistic Virtual Environment</h1>
+                        </div>
+                        <div class="vr-controls">
+                            <button id="vr-help" class="vr-button">Help</button>
+                            <button id="vr-settings" class="vr-button">Menu</button>
+                        </div>
+                    </div>
+                    
+                    <div class="vr-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="vr-progress-fill"></div>
+                        </div>
+                        <div class="progress-text" id="vr-progress-text">Exploring Environment</div>
+                    </div>
+                </div>
+                
+                <div class="vr-canvas-container">
+                    <canvas id="vr-canvas" class="vr-canvas"></canvas>
+                    
+                    <div class="vr-overlay-ui">
+                        <div class="spatial-menu hidden" id="spatial-menu">
+                            <div class="menu-panel">
+                                <h3>Interactions</h3>
+                                <button class="spatial-button" data-action="navigate">Navigation Help</button>
+                                <button class="spatial-button" data-action="interact">Highlight Objects</button>
+                                <button class="spatial-button" data-action="help">Get Information</button>
+                            </div>
+                        </div>
+                        
+                        <div class="interaction-feedback" id="interaction-feedback">
+                            <div class="feedback-content">
+                                <p id="feedback-text">Explore the realistic environment and interact with objects</p>
+                            </div>
+                        </div>
+                        
+                        <div class="accessibility-panel" id="accessibility-panel">
+                            <h3>Accessibility Features Active</h3>
+                            <ul id="active-features">
+                                <li>Spatial Audio Guidance</li>
+                                <li>High Contrast Mode</li>
+                                <li>Interactive Element Highlighting</li>
+                                <li>Voice Feedback</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="vr-controls-panel">
+                    <div class="control-group">
+                        <h3>Movement</h3>
+                        <button class="control-btn" data-action="teleport">
+                            <span class="control-icon">📍</span>
+                            <span>Teleport</span>
+                        </button>
+                        <button class="control-btn" data-action="turn">
+                            <span class="control-icon">🔄</span>
+                            <span>Turn</span>
+                        </button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3>Interaction</h3>
+                        <button class="control-btn" data-action="grab">
+                            <span class="control-icon">✋</span>
+                            <span>Grab</span>
+                        </button>
+                        <button class="control-btn" data-action="point">
+                            <span class="control-icon">👆</span>
+                            <span>Point</span>
+                        </button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <h3>Accessibility</h3>
+                        <button class="control-btn" data-action="audio">
+                            <span class="control-icon">🔊</span>
+                            <span>Audio</span>
+                        </button>
+                        <button class="control-btn" data-action="contrast">
+                            <span class="control-icon">🌗</span>
+                            <span>Contrast</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Screen -->
+        <section id="settings-screen" class="screen">
+            <div class="container">
+                <header class="settings-header">
+                    <button id="back-to-dashboard" class="btn btn--outline">
+                        <span>← Back to Dashboard</span>
+                    </button>
+                    <h1>VR/AR Settings</h1>
+                </header>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h2>Comfort Settings</h2>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Teleportation Movement</span>
+                                <input type="checkbox" class="setting-toggle" id="teleport-toggle" checked>
+                            </label>
+                            <p class="setting-description">Use smooth teleportation for comfortable movement in realistic environments</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Snap Turning</span>
+                                <input type="checkbox" class="setting-toggle" id="snap-turn-toggle" checked>
+                            </label>
+                            <p class="setting-description">Turn in smooth increments to reduce motion sickness</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Comfort Vignette</span>
+                                <input type="checkbox" class="setting-toggle" id="vignette-toggle" checked>
+                            </label>
+                            <p class="setting-description">Reduce peripheral vision during movement for comfort</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h2>Accessibility</h2>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Voice Guidance</span>
+                                <input type="checkbox" class="setting-toggle" id="voice-guidance-toggle" checked>
+                            </label>
+                            <p class="setting-description">Spatial audio descriptions and interaction instructions</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">High Contrast Mode</span>
+                                <input type="checkbox" class="setting-toggle" id="high-contrast-toggle">
+                            </label>
+                            <p class="setting-description">Enhanced visual contrast for better visibility in 3D environments</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Haptic Feedback</span>
+                                <input type="checkbox" class="setting-toggle" id="haptic-toggle" checked>
+                            </label>
+                            <p class="setting-description">Controller vibration and tactile feedback for interactions</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Interactive Highlighting</span>
+                                <input type="checkbox" class="setting-toggle" id="highlight-toggle" checked>
+                            </label>
+                            <p class="setting-description">Automatically highlight interactive objects and accessibility features</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h2>Visual & Audio</h2>
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Field of View</span>
+                            </label>
+                            <input type="range" class="setting-slider" id="fov-slider" min="70" max="110" value="90">
+                            <p class="setting-description">Adjust viewing angle for realistic environments (90°)</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Audio Volume</span>
+                            </label>
+                            <input type="range" class="setting-slider" id="volume-slider" min="0" max="100" value="75">
+                            <p class="setting-description">Master volume level for spatial audio (75%)</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Environmental Audio</span>
+                                <input type="checkbox" class="setting-toggle" id="env-audio-toggle" checked>
+                            </label>
+                            <p class="setting-description">Realistic ambient sounds and environmental audio cues</p>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <label class="setting-label">
+                                <span class="setting-name">Lighting Quality</span>
+                            </label>
+                            <input type="range" class="setting-slider" id="lighting-slider" min="1" max="3" value="2">
+                            <p class="setting-description">Realistic lighting and shadow quality (Medium)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="settings-actions">
+                    <button id="reset-settings" class="btn btn--outline">Reset to Defaults</button>
+                    <button id="save-settings" class="btn btn--primary">Save Settings</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Screen -->
+        <div id="loading-screen" class="loading-screen hidden">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <h2>Initializing Realistic VR Environment</h2>
+                <p id="loading-status">Creating detailed 3D environments with working interactive elements...</p>
+                <div class="loading-progress">
+                    <div class="loading-bar">
+                        <div class="loading-fill" id="loading-fill"></div>
+                    </div>
+                    <div class="loading-percent" id="loading-percent">0%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VR Not Supported Modal -->
+        <div id="vr-not-supported-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>VR/AR Not Available</h2>
+                <p>Your device doesn't support WebXR, but you can still experience our realistic scenarios in enhanced 3D mode with full interaction capabilities.</p>
+                <div class="modal-actions">
+                    <button id="try-3d-mode" class="btn btn--primary">Try Enhanced 3D Mode</button>
+                    <button id="close-vr-modal" class="btn btn--outline">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>🎉 Scenario Completed!</h2>
+                <p>Congratulations! You've successfully navigated the realistic environment and completed all interaction objectives.</p>
+                <div class="achievement-summary">
+                    <h3>What you accomplished:</h3>
+                    <ul>
+                        <li>✅ Explored realistic 3D environment</li>
+                        <li>✅ Successfully used interactive elements</li>
+                        <li>✅ Practiced accessibility features</li>
+                        <li>✅ Completed navigation challenges</li>
+                    </ul>
+                </div>
+                <div class="modal-actions">
+                    <button id="continue-training" class="btn btn--primary">Continue Training</button>
+                    <button id="return-dashboard" class="btn btn--outline">Return to Dashboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen reader announcements -->
+    <div id="sr-announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Include Chart.js for progress visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
